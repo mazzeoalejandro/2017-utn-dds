@@ -2,9 +2,17 @@ package model;
 
 import java.util.List;
 
-public class Metodologia {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "metodologia")
+public class Metodologia extends PersistentEntity {
 	
+	@Column(nullable=false)
 	private String nombre;
+	
+	@OneToMany
+	@JoinColumn(name = "metodologia_id")
 	private List<Regla> reglas;
 
 	public Metodologia(String nombre, List<Regla> reglas) {
